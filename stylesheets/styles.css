@@ -2,9 +2,9 @@
 
 body {
   padding:50px;
-  font:9pt "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:8pt "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#333;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -22,16 +22,16 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size:24pt;
+  font-size:20pt;
 }
 
 h2 {
-  font-size: 20pt;
+  font-size: 16pt;
   color:#393939;
 }
 
 h3, h4, h5, h6 {
-  font-size: 16pt;
+  font-size: 12pt;
   font-weight: bold;
   color:#494949;
 }
@@ -63,7 +63,7 @@ blockquote {
 code, pre {
   font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
   color:#333;
-  font-size:12px;
+  font-size:8px;
 }
 
 pre {
