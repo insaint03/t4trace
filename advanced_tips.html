@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>T4trace: Advanced tips</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>T4trace</h1>
+	<img src="./images/tt-logo.png" width="64" alt="Takumi trace" title="Takumi trace">
+	
+
+        <p class="view"><a href="https://github.com/insaint03/t4trace">View the Project on GitHub <small>insaint03/t4trace</small></a></p>
+
+	<h2>Downloads</h2>
+        <ul>
+          <li><a href="./download/v1.0.0.20140224/T4trace-windows-x64.zip"><strong>Windows (64bit)</strong></a></li>
+          <li><a href="./download/v1.0.0.20140224/T4trace-windows-x32.zip"><strong>Windows (32bit)</strong></a></li>
+          <li><a href="./download/v1.0.0.20140224/T4trace-cocoa-x64.zip"><strong>Mac OS X (64bit)</strong></a></li>
+          <li><a href="./download/sample_images.zip"><strong>Sample Images (100+16)</strong></a></li>
+        </ul>
+	<h2>Documents</h2>
+	<ul>
+		<li><a href="./startup.html">Start up</a></li>
+		<li><a href="./advanced_tips.html">advanced_tips</a></li>
+	</ul>
+      </header>
+      <section>
+	  <h3>Contents</h3>
+	  <ul>
+		  <li><a href="#single">Single Mode</a></li>
+		  <ul>
+			  <li><a href="#single_grid">Grid size setting</a></li>
+			  <li><a href="#single_zoom">Canvas Zoom</a></li>
+			  <li><a href="#single_image">Save current canvas to PNG image</a></li>
+			  <li><a href="#single_table">Save table to text file</a></li>
+			  <li><a href="#single_layers">Save layers to separated PNG image</a></li>
+		  </ul>
+		  <li><a href="#multi">Multi Mode</a></li>
+		  <ul>
+			  <li><a href="#multi_filter">Interactive filter</a></li>
+			  <li><a href="#multi_save">Save to Files</a></li>
+		  </ul>
+	  </ul>
+	  <h3 id="single">Single mode</h3>
+	  <h5 id="single_grid">Grid size setting</h5>
+	  <p>For better performance, T4trace use initial node sampling grids. As grid size getting smaller, results are getting precised, but time-cost will be squared. So, if you try bigger (like, 1024x1024 px or bigger) image, put slide "grid size" on <strong>Main menu &gt; T4trace &gt; Preference</strong> 2 or 4 recommended.</p>
+	  <h5 id="single_zoom">Canvas Zoom</h5>
+	  <p>First, click canvas to get system focus. If you put <strong>CTRL+Arrow-UP</strong> will magnify the canvas (zoom-in). As same manner, <strong>CTRL+Arrow-Down</strong> is zoom-out. If you put <strong>CTRL+0 (Number zero)</strong> will restore default zoom scale. Zoom scalability is limited about 30~300% by origin. </p>
+	  <h5 id="single_image">Save current canvas to PNG image</h5>
+	  <p>Right click on the canvas will open popup menu. Select "Save current canvas to Image" on the menu. Set desired file path to put.</p>
+	  <h5 id="single_table">Save table to text file</h5>
+	  <p>Right click on the table will open popup menu. Select "Save to text" on the menu. Set path then check the result. Images are neglected.</p>
+	  <h5 id="single_layers">Save layers to separated PNG images</h5>
+	  <p>Right click on the canvas, select "Selections to Image". This menu save selected layers into seperated PNG files, with transparency preserved. Enjoy on your paper.</p>
+	  <h3 id="multi">Multi mode</h3>
+	  <h5 id="multi_filter">Interactive filter</h5>
+	  <p>On the right-hand-side panel, you may see toggle button saying "Include", and text field next to it. Those are interactive filter. In case there are tons of images on the folder, it very hard to check items one-by-one.</p>
+	  <p>So, let's say -- if you want to see "DIV3" results first. With button saying "Include", put "DIV3" on the text field. List items will be filtered that 'includes "DIV3" on its name'. If you want to run except, say ".x.filtered" files, Toggle left button to "Except", than put the term on the field.</>
+	  <p>Plus, the filter run based on Java Regular expression. That is, you can set regular expression directly into text filter. Try your own, for example, "DIV\d+_1_3.*$".</p>
+	  <p>Biggest trick is, "Select all" button on the bottom of the list doesn't actually intended "ALL". It means, "All" items, which is shown on the list. And you can filter items interactively. Got the context here? Filter - Select all - Start. There you go.</p>
+	  <h5 id="multi_save">Save to Files</h5>
+	  <p>Although, yes, multi-mode window table also support "Save to text" exactly as single mode. That's not all. Before start processing, try to sel;ect "FILEs To:" check box. It will open folder selection dialog. Select a folder you want to put results. If it set properly, you may see the folder name next to checkbox text. Then, run the process and check the folder. Enjoy!</p>
+      </section>
+      <footer>
+             <p><strong>Author: </strong>Song, Yonggeun (<a href="https://twitter.com/insaint03">insaint03</a>)<br />
+             <strong>Lincense: </strong><a href="http://opensource.org/licenses/BSD-3-Clause">BSD 3</a><br />
+             <stong>Dedicated: </strong><br />Prof. <a href="http://takumi.brain.riken.jp">Takumi toru. M.D., Ph.D., and "Takumi lab"</a>,
+             <br />especially <strong>Fukumoto Keita</strong> <br />
+             </p>
+
+      </footer>
+
+  </body>
+</html>
