@@ -21,6 +21,7 @@ a:active,:visited {
 	color: #2A4480;
 }
 
+
 .wrapper {
 	margin: 0px;
 	padding: 0px;
@@ -92,6 +93,14 @@ div#tabs-wrapper div img.t4t-img {
 	border: none;
 	padding: 24px;
 	cursor: pointer;
+}
+
+h1, h2, h3 {
+	font-size: 12pt;
+}
+
+h4, h5 {
+	font-size: 10pt;
 }
 
 
