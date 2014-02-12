@@ -91,7 +91,6 @@ div#tabs-wrapper div img.t4t-img {
 	width: 240px;
 	border: none;
 	padding: 24px;
-	cursor: pointer;
 }
 
 

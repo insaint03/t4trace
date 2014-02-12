@@ -1,0 +1,9 @@
+﻿		<div id="t4t-about">
+			<h2>T4trace to neurite morphology</h2>
+	  		<img src="./images/20140115.png" >
+			<p>T4trace ("T" for trace) is designed to analyze large-scale neurite micropic images.
+			To appliable on massive analysis, the application hide parameters or manual manipulations rather automated manner. 
+			Still, it is available on general desktop environment. With <a href="http://java.com/download">JRE7</a> and <a href="http://www.eclipse.org/equinox/framework/">Equinox framework</a> basis,
+	  		most Java 1.7 runnable systems are supported.</p>
+	 		<p>If you haven't installed JRE7, try <a href="http://java.com/download">here(http://java.com/download)</a> to get it</p>
+		</div>

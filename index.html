@@ -6,84 +6,168 @@
     <title>T4trace by insaint03</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+	<link rel="stylesheet" href="stylesheets/jquery-ui-1.10.4.custom.min.css">
+	<!-- <link rel="stylesheet" href="stylesheets/pygment_trac.css"> -->
+
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="javascripts/jquery-ui-1.10.4.custom.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('button').button();
+			$('section div#tabs-wrapper').tabs({
+				heightStyle: 'fill',
+				beforeLoad: function(ev, ui) {
+					ui.jqXHR.error(function(query, text, err) {
+							ui.panel.html("<h5>Warning: Error on loading contents</h5>" 
+									+ "<p>" + err  + "</p>");
+						console.log(query);
+					});
+				}
+			});
+
+			// t4t-img dialog
+			$('img.t4t-img').click(function() {
+				var dlg = $(document.createElement('div'));
+				dlg.attr('title', this.title);
+				dlg.html('<img src="'+this.src+'" resize="false">');
+				$(dlg).dialog({
+					width: 'auto',
+					height: 'auto',
+				});
+			});
+
+			// download
+			$('#download_proceed').click(function() {
+				var version = document.getElementById('download_version_code').value;
+				var platform = document.getElementById('download_version_form').value;
+				var link = 'download/'+version+'/T4trace' + platform;
+				window.open(link);
+
+			});
+		});
+
+		$(document).resize(function() {
+			$('section div#tabs-wrapper').css({height: $(window).height()-12});
+		});
+
+	</script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body style="margin: 0px; padding: 0px;">
     <div class="wrapper">
       <header>
-      	<div>
-        <h1>T4trace</h1>
-	<img src="./images/tt-logo.png" width="64" alt="Takumi trace" title="Takumi trace">
-	
-
-        <p class="view"><a href="https://github.com/insaint03/t4trace">View the Project on GitHub <small>insaint03/t4trace</small></a></p>
+      	<div align="right">
+        <a href="https://github.com/insaint03/t4trace">
+			<img class="logo" src="./images/tt-logo.png" width="64" alt="Takumi trace" title="Takumi trace">
+	        <p class="view">View the Project</p>
+		</a>
         </div>
 
-	<div>
-	<h2>Downloads</h2>
-        <ul>
-          <li><a href="./download/v1.0.0.20140224/T4trace-windows-x64.zip"><strong>Windows (64bit)</strong></a></li>
-          <li><a href="./download/v1.0.0.20140224/T4trace-windows-x32.zip"><strong>Windows (32bit)</strong></a></li>
-          <li><a href="./download/v1.0.0.20140224/T4trace-cocoa-x64.zip"><strong>Mac OS X (64bit)</strong></a></li>
-          <li><a href="./download/sample_images.zip"><strong>Sample Images (100+16)</strong></a></li>
-        </ul>
-        </div>
-        
-        <div>
-        <h2>Documents</h2>
-	<ul>
-		<li><a href="./startup.html">Start up</a></li>
-		<li><a href="./advanced_tips.html">advanced_tips</a></li>
-	</ul>
-	</div>
+		<div>
+			<h2>Downloads</h2>
+			<a href="./download/sample_images.zip"><strong>Sample Images (100+16)</strong></a>
+			<input id="download_version_code" type="hidden" value="v1.0.0.20140224"></input>
+			<select id="download_version_form" type="combo" style="margin-top: 12px; margin-bottom: 8px;">
+				<option> -- Select version -- </option>
+				<option value="-windows-x64.zip">Windows (64bit)</option>
+				<option value="-windows-x32.zip">Windows (32bit)</option>
+				<option value="-cocoa-x64.zip">OS X (cocoa 64bit)</option>
+				<option value="-src.jar">Source Code (.jar)</option>
+			</select>
+			<button id="download_proceed" type="button">Get</button>
+		</div>
+
       </header>
       <section>
-	  <h3>T4trace to neuron research</h3>
-	  <img src="./images/20140115.png" >
-	  <p>T4trace ("T" for trace) is designed to analyze large-scale neurite micropic images.
-	  To appliable on massive analysis, the application hide parameters or manual manipulations rather automated manner. 
-	  Still, it is available on general desktop environment. With <a href="http://java.com/download">JRE7</a> and <a href="http://www.eclipse.org/equinox/framework/">Equinox framework</a> basis,
-	  most Java 1.7 runnable systems are supported.</p>
-	  <p>If you haven't installed JRE7, try <a href="http://java.com/download">here(http://java.com/download)</a> to get it</p>
-	  <h3>T4trace to head-first's</h3>
-	  <p>
-	  	<ol>
-			<li>Open T4trace application</li>
-			<li>From Menu, T4trace &gt; Set workspace, select folder contains target images</li>
-			<li>Browse images from left panel, dbl-clk a image</li>
-			<li>You'll see there.</li>
-		</ol>
+		<div id="tabs-wrapper">
+		<ul>
+			<li><a href="#t4t-about">T4trace</a></li>
+			<li><a href="#t4t-quick">Quick start</a></li>
+			<li><a href="#t4t-single">How to: Single</a></li>
+			<li><a href="#t4t-multi">How to: Multi</a></li>
+		</ul>
+		<div id="t4t-about">
+			<h2>T4trace to neurite morphology</h2>
+			<p>T4trace ("T" for trace) has designed to analyze large-scale neurite micropic images.
+			For flruent analysis, the application hide parameters or manual manipulations rather automated manner. 
+			but it is available on general desktop environment. With <a href="http://java.com/download">JRE7</a> and <a href="http://www.eclipse.org/equinox/framework/">Equinox framework</a> basis, most Java 1.7 runnable systems are supported.</p>
+	  		<img class="t4t-img" src="./images/20140115.png" title="Example: Visual output (single)">
+		</div>
+		<div id="t4t-quick">
+			<h3>Install</h3>
+			<h5>Platform requirements</h5>
+			<p>T4trace has based on Java7, Eclipse RCP (Equinox 3) framework. Most desktop environments that can run java7 also can have T4trace.
+			Although it is recommended to have plenty memory space. 4GB minimum on 64-bit system, or for 32-bit systems 2GB physical memory space required.<br />
+			Plus, you'll need recent <a href="http://java.com/download">Java Runtime Environment(JRE)</a> later than 1.7 version.
+			<h3>Quick start</h3>
+			<h5>Workspace</h5>
+			<img class="t4t-img" src="images/t4t-workspace.gif" title="Set workspace">
+			<p>Once you open the application, you'll see a tree-view of file system. Here you need to select your "workspace" that contains data. On top menu, <b>T4trace &lt; Set workspace...</b> will show you a directory selector dialog. Any directory on the file system can be a workspace, but it is recommended to set the root folder of your data images.</p>
+			<h5>Single</h5>
+			<img class="t4t-img" src="images/t4t-single-quick.gif" title="Single analysis">
+			<p>On the file system tree-view, you may find black-green icons. The icon indicates refered file(.tif) is available to run. Double click the icon will bring you the measure, instantly.</p>
+			<h5>Multi</h5>
+			<img class="t4t-img" src="images/t4t-multi-quick.gif" title="Multi analysis">
+			<p>If you double click a folder icon, it will open multiple analysis view. Check target images on the right-hand side table, click "Start" button to proceed. That's all</p>
+		</div>
+		<div id="t4t-single">
+			<h3>Single Analysis</h3>
+			<p>Double click an image icon on the workspace tree view will give you the result in few seconds.</p>
+			<h5>Result tabs</h5>
+			<img class="t4t-img" src="images/t4t-single-tabs.gif" title="Single, tabs">
+			<p>On default, the single view displays visual (canvas) output. However, quantitative data are also provided in form of a table.<br />
+			<b>Model</b> tab contains items by a model. A model is one neuron reconstruction.<br />
+			<b>Node</b> tab contains items by a node. A node is one dot(circle) on the canvas.</p>
+			<h5>Interactive layer</h5>
+			<img class="t4t-img" src="images/t4t-single-layer.gif" title="Single, interactive layers">
+			<p>Single view canvas has several layers that shows you how procedure done. On the right-hand side check list, toggle an item will change the layer's visibility.</p>
+			<h5>Save to image</h5>
+			<p>Right-click on the canvas, select <b>Current to image...</b> will show you saving file dialog. You can have a snapshot of the canvas by this.</p>
+			<p>If you select <b>Selection to Images</b>, you'll see directory selector dialog. If you select a folder, it will save "images of selected layers" to the folder.</p>
+			<h5>Save to text</h5>
+			<p>Right-click on table (Model), select <b>Save current as text</b> will export the data as .txt file.</p>
+			<h5>Zoom</h5>
+			<p>To get focused, make sure single click on the canvas, before proceeding zoom. After canvas getting focused, Ctrl+Arrow UP/DOWN will zoom in/out the canvas.<br />
+			If you want to restore, put Ctrl+0 (Number 0).</p>
+			<h5>Default preference</h5>
+			<p>Single analysis settings are provided from progam properties.<br />
+			On top menu, select <b>T4trace &lt; Preference...</b>. You can select colors, or grid size.</p>
+		</div>
+		<div id="t4t-multi">
+			<h3>Multi Analysis</h3>
+			<p>Double click a folder icon on the workspace tree view will show you multi analysis view.</p>
+			<h5>Interactive Filter</h5>
+			<img class="t4t-img" src="images/t4t-multi-filter.gif" title="Multi, Filter">
+			<p>Multi view doesn't filter out the folder contents. Instead, it has interactive filter on the right.<br />
+			Simply check the items you want will work. But, for sake of simplicity, you can filter the list.<br />
+			It toggles in-/ex-clude the keyword. Also, it provide (java based) regular expression. If the regex has syntax error, you can noticed by the field color changes into grey.</p>
+			<h5>Color filter</h5>
+			<p>You can select input color filter, in case for multi-stained image. For monochrome or single stainning, Grey is fine.</p>
+			<h5>Grid size</h5>
+			<p>The term <b>"Grid size"</b> is (relatively) important in T4trace, since there's not much other parameters.<br />
+			Grid size means a length of sampling rectangle frame by pixel-length, at initial raw-image sampling phase. As grid size getting bigger, node numbers are getting smaller, therefore the performance will get better.<br />
+			But you may loose details with larger grid. x2 setting is recommended on relatively smaller (w/h both 512~1,024 px) raw images.</p>
+			<h5>File save</h5>
+			<p>Like single analysis view, you can save table data into text file. (Images will be ignored) <br />
+			However, you can select a folder to save procedure before starting process.<br />
+			Check <b>FILEs To: </b> check box will show you folder selector dialog. If you select the folder properly, you may see check mark and the folder name appended. With the setting, click "Start" button will save the results.<br />
+			"Nodes" table will only provided when you select a folder to save procedural data.</p>
+		</div>
 
-		OR,
-
-		<ol>
-			<li>Open T4trace application</li>
-			<li>Select workspace</li>
-			<li>dbl-clk a folder contains images</li>
-			<li>Check items (images) on right-hand-side list, and clk "START" button</li>
-			<li>It takes some time, get a cup of coffee - I mean, instant.</li>
-		</ol>
-	</p>
-	<p>
-	<span style="color: #F00;">!Caution:</span> T4trace can takes 8-bit, TIF format images. Monochrome recommended, but you can select color filter on multiple analysis mode.</p>
-
-
-	<p>&nbsp;</p>
-	<h3>"T" for trace and Japanese term, "Takumi(匠)"</h3>
-	<p>The name T4trace, you choose to read either <b>[Tea-for-trace]</b> or <b>[Takumi-trace]</b>. "Takumi"(匠) is Japanese term which means "Elaborated skill, or master of the skill". You may find it's "Takumi-ness" in short.</p>
-      </section>
-      <footer>
+	</div>
+	</section>
+    <footer>
+		<div>
 	     <p><strong>Author: </strong>Song, Yonggeun (<a href="https://twitter.com/insaint03">insaint03</a>)<br />
 	     <strong>Lincense: </strong><a href="http://opensource.org/licenses/BSD-3-Clause">BSD 3</a><br />
 	     <strong>Dedicated: </strong><br />Prof. <a href="http://takumi.brain.riken.jp">Takumi toru. M.D., Ph.D., and "Takumi lab"</a>,
 	     <br />especially <strong>Fukumoto Keita</strong> <br />
 	     </p>
-
+		</div>
       </footer>
-
   </body>
 </html>

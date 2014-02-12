@@ -1,0 +1,46 @@
+﻿		<div id="t4t-howto">
+	  		<h2>Contents</h2>
+		  <ol>
+			  <li><a href="#requirements">Requirements</a></li>
+			  <li><a href="#install">Install</a></li>
+			  <li><a href="#process">Process</a></li>
+			  <ol>
+				  <li><a href="#process_single">Single image</a></li>
+				  <li><a href="#process_multi">Multiple images</a></li>
+			  </ol>	
+		  	  <li><a href="#saving">Save results</a></li>
+		  </ol>
+		  <h2 id="requirements">Requirements</h2>
+		  <p>T4trace is based on JRE7, Equinox framework. To shorten, <strong>The application is 
+		available on most modern desktop systems</strong>, including Windows, Mac OS X and Linux - if it 
+		supports Java 1.7+. It had been tested under Windows 7 SP1 (64bit), OS X Mavericks, Ubuntu 12 LTS. Now Windows/Mac version is available to download.</p>
+		  <h2 id="install">Install</h2>
+		  <p>When you download the proper .zip archive file, unzip it. You may find executable icon on the folder where you extracted. run the application.</p>
+		  <h2 id="process">Process</h2>
+		  <p>OK, now let's dig deeper. (Click the image below will start animation)<br />
+		  <img src="./images/tt_start_and_set_workspace.gif"><br />
+		  First, set <strong>workspace</strong>. workspace means, literally, a "space" where you 
+		  "working". Best recommend is, if you have complex folder structure over images, select the root. 
+			Workspace will be preserved over sessions.</p>
+		  <p>Next, T4trace has 2 different modes:Single and Multi. Single, as it seems, is for 
+			analyzing single input image. With same manner, Multi is to analyze multiple images, under the folder.<p>
+		  <p>As you might expected, yes, if you double-click an image item on the workspace-pane, 
+		it will trigger single-mode. Likewise, if you double-click an folder itme, multi-mode will be open.</p>
+		  <h5 id="process_single"> - Single image</h5>
+		  <p>On single mode, you can see the result instantly. checkboxes on the right-hand-side 
+		are layer selector. You can set layer visibility to test analysis worked properly.</p>
+		  <p>Also, You can change initial-sampling grid size or color settings, on the menu 
+		T4trace &gt; Preference window. The changes will be updated when you "refresh" the single analysis.</p>
+		  <p>Finally, there are tabs on the bottom of the window. "Models" shows model(A 
+		reconstruct, categorized by Soma:the root node) information. "Nodes" table shows each node 
+		information. These tables also available to save into text file. Try right-click on the table.</p>
+		  <h5 id="process_multi"> - Multiple images</h5>
+		  <p>Now, multi mode. you can source images from right-hand side checkbox list. Give a try regular expression on interective-filter on top of the list, you may find it handy! But 
+		beware, checks unseen woudn't be preserved.</p>
+		  <p>So, if you set sources, check color filter and initial grid size. On single mode, initial grid size follows preference setting. However, on multi mode, you can change grid size 
+		for each tries. Select "START" button to proceed.</p>
+		  <p>Done? Check data. those tables also, can be saved to files. Or, if you selected file-save checkbox, You may find more!</p>
+		  <h5>Play with your luck!</h5>
+		<p>
+		<span style="color: #F00;">!Caution:</span> T4trace can takes 8-bit, TIF format images. Monochrome recommended, but you can select color filter on multiple analysis mode.</p>
+		</div>
